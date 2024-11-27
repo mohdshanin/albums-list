@@ -23,7 +23,7 @@ function AlbumsList({ albums }) {
           return (
             <div
               key={albumId}
-              className="photoWrapper album"
+              className="photoWrapper image"
               onClick={() => toggleAlbum(albumId)}
             >
               <p className="photoText">Album No. {albumId}</p>

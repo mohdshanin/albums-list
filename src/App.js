@@ -12,19 +12,22 @@ export default function App() {
     const data = await res.json();
     return data;
   };
-  useEffect(async () => {
-    const newData = {};
-    const data = await getData();
+  useEffect(() => {
+    async function fetchData() {
+      const newData = {};
+      const data = await getData();
 
-    data.map((item) => {
-      const { albumId } = item;
-      if (newData[albumId]) {
-        newData[albumId] = [...newData[albumId], item];
-      } else {
-        newData[albumId] = [item];
-      }
-    });
-    setAlbums(newData);
+      data.map((item) => {
+        const { albumId } = item;
+        if (newData[albumId]) {
+          newData[albumId] = [...newData[albumId], item];
+        } else {
+          newData[albumId] = [item];
+        }
+      });
+      setAlbums(newData);
+    }
+    fetchData();
   }, []);
 
   return (
